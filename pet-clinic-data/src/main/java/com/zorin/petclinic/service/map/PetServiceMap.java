@@ -2,13 +2,15 @@ package com.zorin.petclinic.service.map;
 
 import com.zorin.petclinic.model.Pet;
 import com.zorin.petclinic.service.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
-    public Set<Pet> findall() {
+    public Set<Pet> findAll() {
         return super.findAll();
     }
 

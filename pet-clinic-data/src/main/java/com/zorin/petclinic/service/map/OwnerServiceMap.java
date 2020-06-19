@@ -2,13 +2,15 @@ package com.zorin.petclinic.service.map;
 
 import com.zorin.petclinic.model.Owner;
 import com.zorin.petclinic.service.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
-    public Set<Owner> findall() {
+    public Set<Owner> findAll() {
         return super.findAll();
     }
 
