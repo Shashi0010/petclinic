@@ -1,6 +1,7 @@
 package com.zorin.petclinic.bootstrap;
 
 import com.zorin.petclinic.model.Owner;
+import com.zorin.petclinic.model.Pet;
 import com.zorin.petclinic.model.PetType;
 import com.zorin.petclinic.model.Vet;
 import com.zorin.petclinic.service.OwnerService;
@@ -8,6 +9,8 @@ import com.zorin.petclinic.service.PetTypeService;
 import com.zorin.petclinic.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -38,12 +41,32 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Shashi");
         owner1.setLastName("Kanth");
+        owner1.setAddress("360-661, Amet Street");
+        owner1.setCity("Baricella");
+        owner1.setTelephone("09297556311");
+
+        Pet shashisPet = new Pet();
+        shashisPet.setPetType(savedDogPetType);
+        shashisPet.setOwner(owner1);
+        shashisPet.setBirthDate(LocalDate.now());
+        shashisPet.setName("Rocky");
+        owner1.getPets().add(shashisPet);
 
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Vamshi");
         owner2.setLastName("Dhar");
+        owner2.setAddress("622 Nec, St.");
+        owner2.setCity("Lagundo/Algund");
+        owner2.setTelephone("09617025830");
+
+        Pet vamshisPet = new Pet();
+        vamshisPet.setPetType(savedCatPetType);
+        vamshisPet.setOwner(owner1);
+        vamshisPet.setBirthDate(LocalDate.now());
+        vamshisPet.setName("Goose");
+        owner2.getPets().add(vamshisPet);
 
         ownerService.save(owner2);
 
