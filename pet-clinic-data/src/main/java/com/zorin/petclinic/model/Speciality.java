@@ -1,12 +1,19 @@
 package com.zorin.petclinic.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * Created by Chintu on 6/23/2020
  */
-public class Speciality extends BaseEntity implements Serializable {
 
+@Entity
+@Table(name = "specialties")
+public class Speciality extends BaseEntity {
+
+    @Column(name = "description")
     private String description;
 
     public String getDescription() {
