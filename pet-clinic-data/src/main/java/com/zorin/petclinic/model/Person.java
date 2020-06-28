@@ -1,7 +1,14 @@
 package com.zorin.petclinic.model;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Person extends BaseEntity {
+
+    @Column(name = "First_Name")
     private String firstName;
+    @Column(name = "Last_Name")
     private String lastName;
 
     public String getFirstName() {
