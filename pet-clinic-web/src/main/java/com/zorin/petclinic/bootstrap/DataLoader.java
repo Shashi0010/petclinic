@@ -1,10 +1,7 @@
 package com.zorin.petclinic.bootstrap;
 
 import com.zorin.petclinic.model.*;
-import com.zorin.petclinic.service.OwnerService;
-import com.zorin.petclinic.service.PetTypeService;
-import com.zorin.petclinic.service.SpecialityService;
-import com.zorin.petclinic.service.VetService;
+import com.zorin.petclinic.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,14 +14,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     public DataLoader(OwnerService ownerService, VetService vetService,
                       PetTypeService petTypeService,
-                      SpecialityService specialityService) {
+                      SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -87,6 +86,22 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
         System.out.println("Owners Loaded......");
+
+        Visit dogVisit = new Visit();
+        dogVisit.setDescription("Hyper Active Dog");
+        dogVisit.setPet(shashisPet);
+        dogVisit.setDate(LocalDate.now());
+
+        visitService.save(dogVisit);
+
+        Visit catVisit = new Visit();
+        catVisit.setDescription("Sneezy Cat");
+        catVisit.setPet(vamshisPet);
+        catVisit.setDate(LocalDate.now());
+
+        visitService.save(catVisit);
+
+        System.out.println("Visits are Loaded");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Vishal");
